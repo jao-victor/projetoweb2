@@ -1,0 +1,12 @@
+create database web2;
+\c web2
+
+CREATE TABLE(
+id serial primary key,
+login VARCHAR(20),
+senha VARCHAR(20)
+);
+
+insert into aluno values (1, 'joao', '1234');
+insert into aluno values (2, 'carlos', '4567');
+
