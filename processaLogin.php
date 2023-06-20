@@ -29,7 +29,10 @@ try{
 
         $_SESSION['login'] = $resultado[0]['login'];
         $_SESSION['senha'] = $resultado[0]['senha'];
+        
 
+        setcookie('login', $resultado[0]['nome'], time() + (86400 * 30), "/");
+        //var_dump($_COOKIE['login']);
         header("Location: index.php");
         exit();
     }

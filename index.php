@@ -5,9 +5,9 @@ if (!isset($_SESSION)) session_start();
 
 if (!isset($_SESSION['login'])) {
 
-    var_dump("plkmdpmfdpvmfd");
-    // Destrói a sessão por segurança
+
     session_destroy();
+    setcookie("login", "", time() - 3600);
     // Redireciona o visitante de volta pro login
     header("Location: login.html"); exit;
 }
@@ -28,6 +28,18 @@ if (!isset($_SESSION['login'])) {
     <?php include("./menu.php") ?>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Desenvolvimento Web 2</h1>
+
+
+        <?php
+            if (isset($_COOKIE['login'])) {
+                $loginArmazenado = $_COOKIE['login'];
+                echo "<h2 style='color: red;'>Bem vindo:" . $loginArmazenado . "</h2>";
+            } else {
+                echo "Cookie não encontrado.";
+            }
+        ?>
+
+
         <p class="lead">Objetivo: Desenvolver aplicações WEB utilizando servidor apache, linguagem PHP, biblioteca
             jQuery, acesso a banco de dados e técnicas de orientação a objetos seguindo o padrão MVC para desenvolver
             aplicações completas.</p>
